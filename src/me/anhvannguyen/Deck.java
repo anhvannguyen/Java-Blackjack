@@ -12,7 +12,7 @@ public class Deck {
 	private ArrayList<Card> deck = new ArrayList<Card>();
 
 
-	// Constructor class to create a new deck and populate with cards
+	// Constructor to create a new deck and populate with cards
 	public Deck() {
 		resetDeck();
 	}

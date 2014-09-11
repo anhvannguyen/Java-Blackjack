@@ -15,17 +15,17 @@ public class Card {
 		ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING
 	};
 
-	private Face mFace;		// represents the face of the card
-	private Suit mSuit;		// represents the suit of the card
+	private Face face;		// represents the face of the card
+	private Suit suit;		// represents the suit of the card
 
 	public Card(Face face, Suit suit) {
-		mFace = face;
-		mSuit = suit;
+		this.face = face;
+		this.suit = suit;
 	}
 
 	// Convert the Face value to a string representation
 	public String getFaceAsString() {
-		switch (mFace) {
+		switch (face) {
 		case ACE:
 			return "Ace";
 		case TWO:
@@ -59,7 +59,7 @@ public class Card {
 
 	// Convert the Suit value to a string representation
 	public String getSuitAsString() {
-		switch (mSuit) {
+		switch (suit) {
 		case SPADES:
 			return "Spades";
 		case CLUBS:
@@ -72,6 +72,15 @@ public class Card {
 			return "?";
 		}
 	}
+	
+	public Face getFaceOfCard() {
+		return face;
+	}
+	
+	public Suit getSuitOfCard() {
+		return suit;
+	}
+	
 
 	@Override
 	public String toString() {
