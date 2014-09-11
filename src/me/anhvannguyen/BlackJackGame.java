@@ -32,7 +32,6 @@ public class BlackJackGame {
 		String userName = scanner.nextLine();
 		System.out.println("Hello " + userName);
 
-		//BlackJackGame blackJackGame = new BlackJackGame();
 		deck = new Deck();
 		// Print out a list of cards in the deck
 		System.out.println();
