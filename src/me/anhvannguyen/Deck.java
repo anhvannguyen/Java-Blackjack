@@ -92,6 +92,25 @@ public class Deck {
 		}
 	}
 	
+	// Deal a card, then remove it from the deck
+	public Card dealCard() {
+		if (deck.isEmpty())
+			return null;
+		
+		// Get the top card in the deck
+		Card card = deck.get(deck.size() - 1);
+		
+		// Remove the card from the deck list
+		deck.remove(card);
+		
+		// Return the card that was at the top of the deck
+		return card;
+	}
+	
+	// Return the size how many cards remain in the deck
+	public int deckSize() {
+		return deck.size();
+	}
 
 	 // Helper to print the current deck list
 	public void printDeckList() {
