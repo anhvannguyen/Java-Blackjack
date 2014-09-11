@@ -3,21 +3,18 @@ package me.anhvannguyen;
 //import java.io.Console;
 import java.util.Scanner;
 
-import javax.swing.DebugGraphics;
 
 /**
  * @author Anh Nguyen
  * @version 1.0 
  * The end goal of this program is to make a simple blackjack game.
- * The current goal is to make a quick and dirty list of cards and add
- * it to a deck, then we shuffle the deck
+ * 
  */
 
 public class BlackJackGame {
 
 	public static void main(String[] args) {
 		
-
 		BlackJackGame game = new BlackJackGame();
 		//game.debugTesting();
 		game.playBlackJack();
@@ -46,6 +43,9 @@ public class BlackJackGame {
 		System.out.println("============");
 		user.printPlayerHand();
 		System.out.println("Total Value: " + user.getHandValue());
+		
+		// TODO: Take in user input to play the game
+		// TODO: Create the dealer logic to play
 	}
 	
 	// Helper to test the functions of the game

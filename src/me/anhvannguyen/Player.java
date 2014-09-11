@@ -26,7 +26,7 @@ public class Player {
 		hand.add(card2);
 	}
 
-	// Helper to check if there is any ace cards in hand
+	// Check if there is any ace cards in hand
 	public boolean hasAce() {
 		for (Card c : hand) {
 			if (c.getFaceOfCard() == Card.Face.ACE)
@@ -79,6 +79,7 @@ public class Player {
 		return sumOfCards;
 	}
 	
+	// Print out all the cards that are currently in the players hand
 	public void printPlayerHand() {
 		for (Card c : hand) {
 			System.out.println(c);
