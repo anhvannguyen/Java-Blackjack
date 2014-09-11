@@ -1,5 +1,6 @@
 package me.anhvannguyen;
 
+import java.util.Random;
 //import java.io.Console;
 import java.util.Scanner;
 
@@ -7,9 +8,11 @@ import java.util.Scanner;
 /**
  * @author Anh Nguyen
  * @version 1.0
- * The current goal of this program is to make a quick and dirty list of cards
+ * The end goal of this program is to make a simple blackjack game.
+ * The current goal is to make a quick and dirty list of cards
  * and add it to a deck, then we shuffle the deck
  */
+
 public class BlackJackGame {
 
 	private String[] deck = new String[52];
@@ -29,27 +32,39 @@ public class BlackJackGame {
 		//Console console = System.console();
 		//String userName = console.readLine("Enter your name: ");
 		
-		// Testing user input for future use using the the scanner class
+		// Testing user input for future use
 		Scanner scanner = new Scanner(System.in);
-		
 		System.out.print("Enter your name: ");
 		String userName = scanner.nextLine();
-		
 		System.out.println("Hello " + userName);
 		
-		System.out.println("Here are the current list of cards:");
+		
 		BlackJackGame blackJackGame = new BlackJackGame();
+		
+		// Print out a list of cards in the deck
+		System.out.println();
+		System.out.println("Cards before shuffle:");
+		System.out.println("=====================");
 		blackJackGame.createDeck();
+		for (String card : blackJackGame.getDeck()) {
+			System.out.println(card);
+		}
+		
+		// Shuffle the cards and print out the new deck
+		System.out.println();
+		System.out.println("Cards after shuffle:");
+		System.out.println("====================");
+		blackJackGame.shuffleDeck();
 		for (String card : blackJackGame.getDeck()) {
 			System.out.println(card);
 		}
 	}
 	
 	/**
-	 * Generates 
+	 * Generates a deck of cards
 	 */
 	private void createDeck() {
-		// TODO: Create a card deck
+		// TODO: Refactor to a Card class
 		int count = 0;
 		String face = "";
 		String suit = "";
@@ -117,8 +132,22 @@ public class BlackJackGame {
 		}
 	}
 	
+	
+	/**
+	 * Shuffle the deck of cards
+	 */
 	private void shuffleDeck() {
-		// TODO: Shuffle deck
+		// TODO: Refactor and test out Java Collections shuffle
+		
+		// Iterate through each position in the deck and swap the card with another random card in the deck
+		Random random = new Random();
+		for (int i = 0; i < deck.length; i++) {
+			int randomNumber = random.nextInt(deck.length);
+			String temp = deck[i];
+			deck[i] = deck[randomNumber];
+			deck[randomNumber] = temp;
+		}
+		
 	}
 
 }
