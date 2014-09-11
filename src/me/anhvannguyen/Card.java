@@ -73,15 +73,53 @@ public class Card {
 		}
 	}
 	
+	// Return what type of face the card has
 	public Face getFaceOfCard() {
 		return face;
 	}
 	
+	// Return what type of suit the card has
 	public Suit getSuitOfCard() {
 		return suit;
 	}
 	
+	// Get the numerical value of the card
+	public int getCardValue() {
+		switch (face) {
+		case ACE:
+			return 1;
+		case TWO:
+			return 2;
+		case THREE:
+			return 3;
+		case FOUR:
+			return 4;
+		case FIVE:
+			return 5;
+		case SIX:
+			return 6;
+		case SEVEN:
+			return 7;
+		case EIGHT:
+			return 8;
+		case NINE:
+			return 9;
+		case TEN:
+			return 10;
+		case JACK:
+			return 10;
+		case QUEEN:
+			return 10;
+		case KING:
+			return 10;
+		default:
+			return 0;
+		}
+	}
+	
 
+	// String representation of what our card looks like.
+	// Output should look something like "Ace of Clubs" or "Ten of Diamonds"
 	@Override
 	public String toString() {
 		return getFaceAsString() + " of " + getSuitAsString();

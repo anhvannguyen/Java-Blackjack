@@ -3,6 +3,8 @@ package me.anhvannguyen;
 //import java.io.Console;
 import java.util.Scanner;
 
+import javax.swing.DebugGraphics;
+
 /**
  * @author Anh Nguyen
  * @version 1.0 
@@ -14,11 +16,41 @@ import java.util.Scanner;
 public class BlackJackGame {
 
 	public static void main(String[] args) {
-		Deck deck;
+		
 
+		BlackJackGame game = new BlackJackGame();
+		//game.debugTesting();
+		game.playBlackJack();
+		
+	}
+	
+	public void playBlackJack() {
+		Player user = new Player();
+		Player dealer = new Player();
+		Deck deck = new Deck();
+		
 		// Display greeting
 		System.out.println("Welcome to a game of BlackJack\n");
-
+		
+		System.out.println("Shuffling deck...");
+		deck.shuffleDeck();
+		
+		System.out.println("Dealing cards...");
+		user.addCard(deck.dealCard());
+		dealer.addCard(deck.dealCard());
+		user.addCard(deck.dealCard());
+		dealer.addCard(deck.dealCard());
+		
+		System.out.println();
+		System.out.println("Player Hand:");
+		System.out.println("============");
+		user.printPlayerHand();
+		System.out.println("Total Value: " + user.getHandValue());
+	}
+	
+	// Helper to test the functions of the game
+	public void debugTesting() {
+		
 		// Eclipse does not have a true console and using the Console class will
 		// always return null in eclipse
 		// Eclipse Bug 122429:
@@ -32,7 +64,7 @@ public class BlackJackGame {
 //		String userName = scanner.nextLine();
 //		System.out.println("Hello " + userName);
 
-		deck = new Deck();
+		Deck deck = new Deck();
 		// Print out a list of cards in the deck
 		System.out.println();
 		System.out.println("Cards before shuffle:");
@@ -60,4 +92,7 @@ public class BlackJackGame {
 		System.out.println("=====================");
 		deck.printDeckList();
 	}
+	
+	
+	
 }
