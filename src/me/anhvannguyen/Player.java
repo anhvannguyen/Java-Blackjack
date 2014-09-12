@@ -7,10 +7,11 @@ import java.util.ArrayList;
  * A class to represent the dealer and player(s)
  */
 public class Player {
-	public static final int MAX_CARDS = 5;		// Maximum number of cards the player can have in their hand
-	public static final int MAX_CARD_VALUE = 21;	// Maximum total value of card in hand, going over this amount and player loses
+	public static final int MAX_CARDS = 5;			// Maximum number of cards the player can have in their hand
+	public static final int MAX_CARD_VALUE = 21;	// Maximum total value of card in hand, 
+													// going over this amount and player loses
 	
-	private ArrayList<Card> hand;			// List of cards in hand
+	private ArrayList<Card> hand;					// List of cards in hand
 	
 	// Initialize the player with an empty hand
 	public Player() {
@@ -71,8 +72,8 @@ public class Player {
 		// At most only one Ace card in the deck can have an Ace card of value 11.
 		// Because having two Ace in the deck will bring the total value of the hand
 		// to 22, if both have a value of 11.
-		// Here we add the difference of the Ace value (11 - 1) = 10 since the value of 1 of the Ace card
-		// has been added to the total
+		// Here we add the difference of the Ace value (11 - 1) = 10 since the value of 
+		// 1 of the Ace card has been added to the total
 		if (hasAce() && sumOfCards + 10 <= MAX_CARD_VALUE)
 			sumOfCards += 10;
 		

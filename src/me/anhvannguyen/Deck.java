@@ -25,7 +25,8 @@ public class Deck {
 	
 	
 
-	// Reset our deck list by removing everything and repopulate with an unshuffled deck
+	// Reset our deck list by removing everything and 
+	// repopulate with an unshuffled deck
 	public void resetDeck() {
 		deck.clear();
 		for (int i = 0; i < 4; i++) {

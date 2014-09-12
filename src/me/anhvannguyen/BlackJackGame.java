@@ -3,7 +3,6 @@ package me.anhvannguyen;
 //import java.io.Console;
 import java.util.Scanner;
 
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
 
 /**
  * @author Anh Nguyen
@@ -17,46 +16,47 @@ public class BlackJackGame {
 	public static void main(String[] args) {
 
 		BlackJackGame game = new BlackJackGame();
-		// game.debugTesting();
+		//game.debugTesting();
 		game.playBlackJack();
 
 	}
 
 	public void playBlackJack() {
-		Player user = new Player();
-		Player dealer = new Player();
-		Deck deck = new Deck();
+		final String PLAYER_TAG = "Player";
+		final String DEALER_TAG = "Dealer";
+		
+		Player user = new Player();		// Create the user/player
+		Player dealer = new Player();	// Create the dealer
+		Deck deck = new Deck();			// Create the deck
 
 		// Display greeting
 		System.out.println("Welcome to a game of BlackJack\n");
 
+		// Shuffle the deck
 		System.out.println("Shuffling deck...");
 		deck.shuffleDeck();
 
+		// Deal out the cards in alternating order
 		System.out.println("Dealing cards...");
 		user.addCard(deck.dealCard());
 		dealer.addCard(deck.dealCard());
 		user.addCard(deck.dealCard());
 		dealer.addCard(deck.dealCard());
 
-		displayHand(user);
+		displayHand(user, PLAYER_TAG);
 
-		// Create a simple game loop
+		// A game loop for the user
 		while (true) {
-			// Break out of the loop if the player hand is full or if the hand is already over 21
-			if (user.getCardCount() >= Player.MAX_CARDS) {
-				System.out.println();
-				System.out.println("Hand is full");
-				break;
-			}
-			if (user.getHandValue() > Player.MAX_CARD_VALUE) {
-				System.out.println();
-				System.out.println("Hand is over 21");
-				System.out.println("You Lose!");
+			// Player turn will automatically end if the following happens:
+			// 1. The player already has too many cards in hand
+			// 2. The player card value is over 21
+			if (user.getCardCount() >= Player.MAX_CARDS 
+					|| user.getHandValue() > Player.MAX_CARD_VALUE) {
 				break;
 			}
 			
-			// Get the user input on what they want to do, and will keep looping until a valid input is entered
+			// Get the user input on what they want to do, and will 
+			// keep looping until a valid input is entered
 			int userChoice;
 			do {
 				Scanner scanner = new Scanner(System.in);
@@ -68,25 +68,55 @@ public class BlackJackGame {
 
 			if (userChoice == 2) {
 				break;
-			} else {
+			} else if (userChoice == 1) {
 				user.addCard(deck.dealCard());
+				displayHand(user, PLAYER_TAG);
 			}
 		}
-		displayHand(user);
+		displayHand(user, PLAYER_TAG);
 		
+		// Dealer Turn
+		System.out.println("\n** Dealer Turn **");
+		displayHand(dealer, DEALER_TAG);
 		// TODO: Create the dealer logic to play
+		// A game loop for the dealer
+		while (true) {
+			// Dealer turn will automatically end if the following happens:
+			// 1. The player card value is over 21
+			// 2. The dealer card value is over 21
+			// 3. The dealer has too many cards in hand
+			// 4. The dealer hand is greater than the player hand
+			if (user.getHandValue() > Player.MAX_CARD_VALUE 
+					|| dealer.getHandValue() > Player.MAX_CARD_VALUE 
+					|| dealer.getCardCount() >= Player.MAX_CARDS 
+					|| dealer.getHandValue() > user.getHandValue()) {
+				break;
+			}
+			
+			// Dealer has nothing to lose, keep drawing a card until they beat the
+			// user or the hand goes over 21
+			System.out.println("Dealer drawing card...");
+			dealer.addCard(deck.dealCard());
+			displayHand(dealer, DEALER_TAG);
+		}
+		checkWinner(user, dealer);
+	}
+	
+	private void checkWinner(Player player1, Player player2) {
+		
 	}
 
-	public void displayHand(Player player) {
+	// Helper to display the current hand
+	private void displayHand(Player player, String playerName) {
 		System.out.println();
-		System.out.println("Player Hand:");
+		System.out.println(playerName + " Hand:");
 		System.out.println("============");
 		player.printPlayerHand();
-		System.out.println("Total Value: " + player.getHandValue());
+		System.out.println(playerName + " Total Value: " + player.getHandValue());
 	}
 
 	// Helper to test the functions of the game
-	public void debugTesting() {
+	private void debugTesting() {
 
 		// Eclipse does not have a true console and using the Console class will
 		// always return null in eclipse
@@ -96,10 +126,10 @@ public class BlackJackGame {
 		// String userName = console.readLine("Enter your name: ");
 
 		// Testing user input for future use
-		// Scanner scanner = new Scanner(System.in);
-		// System.out.print("Enter your name: ");
-		// String userName = scanner.nextLine();
-		// System.out.println("Hello " + userName);
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("Enter your name: ");
+		String userName = scanner.nextLine();
+		System.out.println("Hello " + userName);
 
 		Deck deck = new Deck();
 		// Print out a list of cards in the deck
