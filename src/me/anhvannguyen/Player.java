@@ -85,6 +85,13 @@ public class Player {
 		return hand.size();
 	}
 	
+	// Determine if the player has a blackjack (2 cards that total 21)
+	public boolean hasBlackJack() {
+		if (getHandValue() == MAX_CARD_VALUE && getCardCount() == 2)
+			return true;
+		return false;
+	}
+	
 	// Print out all the cards that are currently in the players hand
 	public void printPlayerHand() {
 		for (Card c : hand) {

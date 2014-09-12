@@ -73,7 +73,7 @@ public class BlackJackGame {
 				displayHand(user, PLAYER_TAG);
 			}
 		}
-		displayHand(user, PLAYER_TAG);
+		//displayHand(user, PLAYER_TAG);
 		
 		// Dealer Turn
 		System.out.println("\n** Dealer Turn **");
@@ -102,7 +102,40 @@ public class BlackJackGame {
 		checkWinner(user, dealer);
 	}
 	
+	// Check the player and dealer hand to see who win/lose or if it's a tie
+	// Blackjack will beat out all
 	private void checkWinner(Player player1, Player player2) {
+		System.out.println();
+		System.out.println("** Checking Winner **");
+		// Checking some special case
+		if (player1.hasBlackJack() && player2.hasBlackJack()) {
+			System.out.println("Both user and dealer has blackjack!");
+			System.out.println("Game is a Draw!");
+		} else if (player1.hasBlackJack() && !player2.hasBlackJack()) {
+			System.out.println("You have blackjack!");
+			System.out.println("You Win!");
+		} else if (!player1.hasBlackJack() && player2.hasBlackJack()) {
+			System.out.println("Dealer have blackjack!");
+			System.out.println("You Lose!");
+		} else if (player1.getHandValue() > Player.MAX_CARD_VALUE) {
+			System.out.println("You went over!");
+			System.out.println("You Lose!");
+		} else if (player2.getHandValue() > Player.MAX_CARD_VALUE) {
+			System.out.println("Dealer went over!");
+			System.out.println("You Win!");
+		}
+		
+		// Compare the hand of the dealer and player
+		if (player1.getHandValue() <= Player.MAX_CARD_VALUE && player2.getHandValue() <= Player.MAX_CARD_VALUE) {
+			if (player2.getHandValue() == player1.getHandValue()) {
+				System.out.println("Game is a draw!");
+			} else if (player2.getHandValue() > player1.getHandValue()) {
+				System.out.println("You Lose!");
+			} else if (player1.getHandValue() > player2.getHandValue()) {
+				// This should not happen because of the aggressive nature of the dealer logic
+				System.out.println("You Win!");
+			}
+		}
 		
 	}
 
