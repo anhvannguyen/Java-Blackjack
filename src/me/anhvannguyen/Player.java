@@ -7,8 +7,8 @@ import java.util.ArrayList;
  * A class to represent the dealer and player(s)
  */
 public class Player {
-	private final int MAX_CARDS = 5;		// Maximum number of cards the player can have in their hand
-	private final int MAX_CARD_VALUE = 21;	// Maximum total value of card in hand, going over this amount and player loses
+	public static final int MAX_CARDS = 5;		// Maximum number of cards the player can have in their hand
+	public static final int MAX_CARD_VALUE = 21;	// Maximum total value of card in hand, going over this amount and player loses
 	
 	private ArrayList<Card> hand;			// List of cards in hand
 	
@@ -77,6 +77,11 @@ public class Player {
 			sumOfCards += 10;
 		
 		return sumOfCards;
+	}
+	
+	// Get many cards the player has in their hand
+	public int getCardCount() {
+		return hand.size();
 	}
 	
 	// Print out all the cards that are currently in the players hand
