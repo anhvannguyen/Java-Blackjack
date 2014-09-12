@@ -43,11 +43,20 @@ public class BlackJackGame {
 
 		// Create a simple game loop
 		while (true) {
-			// Break out of the loop if the player hand is full or if
+			// Break out of the loop if the player hand is full or if the hand is already over 21
 			if (user.getCardCount() >= Player.MAX_CARDS) {
+				System.out.println();
+				System.out.println("Hand is full");
+				break;
+			}
+			if (user.getHandValue() > Player.MAX_CARD_VALUE) {
+				System.out.println();
+				System.out.println("Hand is over 21");
+				System.out.println("You Lose!");
 				break;
 			}
 			
+			// Get the user input on what they want to do, and will keep looping until a valid input is entered
 			int userChoice;
 			do {
 				Scanner scanner = new Scanner(System.in);
