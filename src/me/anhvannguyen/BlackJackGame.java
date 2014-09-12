@@ -102,6 +102,9 @@ public class BlackJackGame {
 				System.out.println("Dealer drawing card...");
 				dealer.addCard(deck.dealCard());
 				displayHand(dealer, DEALER_TAG); 
+			} else {
+				// exit the loop when the dealer hand is 17 or over
+				break;
 			}
 		}
 		checkWinner(user, dealer);
@@ -128,19 +131,18 @@ public class BlackJackGame {
 		} else if (player2.getHandValue() > Player.MAX_CARD_VALUE) {
 			System.out.println("Dealer went over!");
 			System.out.println("You Win!");
-		}
-		
-		// Compare the hand of the dealer and player
-		if (player1.getHandValue() <= Player.MAX_CARD_VALUE && player2.getHandValue() <= Player.MAX_CARD_VALUE) {
-			if (player2.getHandValue() == player1.getHandValue()) {
-				System.out.println("Game is a draw!");
-			} else if (player2.getHandValue() > player1.getHandValue()) {
-				System.out.println("You Lose!");
-			} else if (player1.getHandValue() > player2.getHandValue()) {
-				System.out.println("You Win!");
+		} else {
+			// Compare the hand of the dealer and player
+			if (player1.getHandValue() <= Player.MAX_CARD_VALUE && player2.getHandValue() <= Player.MAX_CARD_VALUE) {
+				if (player2.getHandValue() == player1.getHandValue()) {
+					System.out.println("Game is a draw!");
+				} else if (player2.getHandValue() > player1.getHandValue()) {
+					System.out.println("You Lose!");
+				} else if (player1.getHandValue() > player2.getHandValue()) {
+					System.out.println("You Win!");
+				}
 			}
 		}
-		
 	}
 
 	// Helper to display the current hand
