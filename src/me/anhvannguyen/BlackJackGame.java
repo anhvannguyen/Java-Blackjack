@@ -73,7 +73,6 @@ public class BlackJackGame {
 				displayHand(user, PLAYER_TAG);
 			}
 		}
-		//displayHand(user, PLAYER_TAG);
 		
 		// Dealer Turn
 		System.out.println("\n** Dealer Turn **");
