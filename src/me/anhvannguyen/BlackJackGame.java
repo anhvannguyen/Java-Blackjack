@@ -94,10 +94,15 @@ public class BlackJackGame {
 			}
 			
 			// Dealer has nothing to lose, keep drawing a card until they beat the
-			// user or the hand goes over 21
-			System.out.println("Dealer drawing card...");
-			dealer.addCard(deck.dealCard());
-			displayHand(dealer, DEALER_TAG);
+			// user or the hand goes over 21.
+			// Added the 17 rule because the dealer will win too much.
+			// The dealer must draw when the hand is 16 or under and must stand when
+			// the hand is 17 and over.
+			if (dealer.getHandValue() < 17) {
+				System.out.println("Dealer drawing card...");
+				dealer.addCard(deck.dealCard());
+				displayHand(dealer, DEALER_TAG); 
+			}
 		}
 		checkWinner(user, dealer);
 	}
@@ -132,7 +137,6 @@ public class BlackJackGame {
 			} else if (player2.getHandValue() > player1.getHandValue()) {
 				System.out.println("You Lose!");
 			} else if (player1.getHandValue() > player2.getHandValue()) {
-				// This should not happen because of the aggressive nature of the dealer logic
 				System.out.println("You Win!");
 			}
 		}
