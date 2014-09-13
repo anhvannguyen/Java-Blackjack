@@ -10,5 +10,6 @@ Simple Rules
 - Each hand can hold a maximum of 5 cards.
 - Player and dealer will both be dealt 2 cards each at the start
 - Player will take his turn to hit or stand, then dealer will go.
-
-
+<hr>
+TODO
+- Create GUI
