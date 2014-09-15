@@ -5,10 +5,9 @@ import java.util.Scanner;
 
 
 /**
+ * The end goal of this program is to make a simple blackjack game.
  * @author Anh Nguyen
  * @version 1.0 
- * The end goal of this program is to make a simple blackjack game.
- * 
  */
 
 public class BlackJackGame {

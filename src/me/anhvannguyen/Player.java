@@ -3,8 +3,8 @@ package me.anhvannguyen;
 import java.util.ArrayList;
 
 /**
- * @author Anh
  * A class to represent the dealer and player(s)
+ * @author Anh
  */
 public class Player {
 	public static final int MAX_CARDS = 5;			// Maximum number of cards the player can have in their hand
@@ -64,7 +64,7 @@ public class Player {
 		// Go through each cards in hand and add the values
 		int sumOfCards = 0;
 		for (Card c : hand) {
-			sumOfCards += c.getCardValue();
+			sumOfCards += c.getFaceOfCard().getValue();
 		}
 		
 		// Ace can have a value of 1 or 11.  
