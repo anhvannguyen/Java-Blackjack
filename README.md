@@ -12,5 +12,5 @@ Simple Rules
 - Player will take his turn to hit or stand, then dealer will go.
 <hr>
 TODO
-- Enum refactor for the strings
 - Create GUI
+- Refactor
